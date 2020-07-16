@@ -75,8 +75,8 @@ const TricksView = () => {
             <Text>
               Tricks are automatically generated on the server. If you feel
               there's a trick missing from the database, the difficulty for
-              certain tricks is incorrect, or a trick should have another
-              nickname, you can request this over here:
+              certain tricks is incorrect, or a trick should have a different
+              name, you can request this over here:
             </Text>
             <TextArea
               placeholder="Fill in your request..."
