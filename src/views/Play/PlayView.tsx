@@ -59,7 +59,7 @@ const PlayView = () => {
   }, [settings, availableTricks])
 
   return (
-    <Wrapper style={{ overflow: 'hidden', padding: 'm' }}>
+    <Wrapper style={{ overflow: 'hidden', padding: 'l' }}>
       <Container
         style={{
           overflow: 'hidden',
@@ -128,21 +128,16 @@ const PlayView = () => {
           )}
         </Box>
 
-        <Row>
-          <Col>
-            <Button
-              onClick={
-                availableTricks && availableTricks.length
-                  ? onNextClick
-                  : onRestart
-              }
-            >
-              {availableTricks && availableTricks.length
-                ? 'Next Trick'
-                : 'Reset Tricks'}
-            </Button>
-          </Col>
-        </Row>
+        <Button
+          isBlock
+          onClick={
+            availableTricks && availableTricks.length ? onNextClick : onRestart
+          }
+        >
+          {availableTricks && availableTricks.length
+            ? 'Next Trick'
+            : 'Reset Tricks'}
+        </Button>
       </Container>
     </Wrapper>
   )

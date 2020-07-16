@@ -83,7 +83,7 @@ const TricksView = () => {
               onChange={debounce(onRequestMessageChange, 250)}
             />
             <Button
-              variant={requestMessage.length < 4 ? 'disabled' : ''}
+              isDisabled={requestMessage.length < 4}
               onClick={onSubmitRequest}
             >
               Send

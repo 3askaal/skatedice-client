@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"3oilerplate@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/3oilerplate/-/3oilerplate-0.1.6.tgz#8426a135329e37eff053fa95f2bb219fc695c405"
-  integrity sha512-DvfiBOTAA0BhqOFhsxO8VSP1YjJMdnmyAaJ/wtpwFQ/G3Ro4mLn45I52o65eT+GwlJMTw7Y14GXHL1jyZGXKVw==
+"3oilerplate@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/3oilerplate/-/3oilerplate-0.1.13.tgz#0912bb62641ce4a53a8bd7e33b8d020e0312e1fc"
+  integrity sha512-jMr/MnIm6Kf5g2CiOnfBiR5UcXMC3iht0gQH8npuGnRycLl5azWXqTHEBSE20tCyA5Um5g1DLP9PtHfaMP24FA==
   dependencies:
     "@styled-system/css" "^5.1.5"
     "@testing-library/jest-dom" "^4.2.4"

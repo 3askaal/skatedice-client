@@ -48,41 +48,33 @@ const SetupView = () => {
           }}
         >
           <Logo />
-          <Container
-            style={{
-              flexGrow: 0,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Spacer size="m" style={{ width: '100%' }}>
-              <Select
-                block
-                options={DIFFICULTY_OPTIONS}
-                value={settings.difficulty}
-                onChange={(value: number) => setSettings({ difficulty: value })}
-              />
-              {expectedTricks.length ? (
-                <Box style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Text type="small">Expect tricks like:</Text>
-                  {expectedTricks.map((expectedTrick: any) => (
-                    <Text key={keyGen()} type="small">
-                      {'- '}
-                      <Trick trick={expectedTrick} />
-                    </Text>
-                  ))}
-                </Box>
-              ) : null}
-            </Spacer>
-          </Container>
+
+          <Spacer size="m" style={{ width: '100%' }}>
+            <Select
+              block
+              options={DIFFICULTY_OPTIONS}
+              value={settings.difficulty}
+              onChange={(value: number) => setSettings({ difficulty: value })}
+            />
+            {expectedTricks.length ? (
+              <Box style={{ display: 'flex', flexDirection: 'column' }}>
+                <Text type="small">Expect tricks like:</Text>
+                {expectedTricks.map((expectedTrick: any) => (
+                  <Text key={keyGen()} type="small">
+                    {'- '}
+                    <Trick trick={expectedTrick} />
+                  </Text>
+                ))}
+              </Box>
+            ) : null}
+          </Spacer>
+
           {/* <CheckboxGroup options={SPECIAL_OPTIONS} /> */}
         </Spacer>
 
-        <Row>
-          <Col>
-            <Button onClick={onStart}>Start</Button>
-          </Col>
-        </Row>
+        <Button isBlock onClick={onStart}>
+          Start
+        </Button>
       </Container>
     </Wrapper>
   )
