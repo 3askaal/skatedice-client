@@ -28,7 +28,7 @@ export const Trick = ({ trick = {}, block, interactive }: any) => {
   ].filter(Boolean)
 
   return (
-    <STrick display={block ? 'flex' : 'inline-flex'}>
+    <STrick s={{ display: block ? 'flex' : 'inline-flex' }}>
       {trickParts.map((trickPart: any) => (
         <STrickPart key={keyGen()} interactive={interactive}>
           {trickPart}

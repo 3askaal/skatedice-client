@@ -55,12 +55,12 @@ const TricksView = () => {
   }
 
   return (
-    <Wrapper style={{ padding: 'l', overflow: 'hidden' }}>
-      <Container style={{ overflow: 'hidden' }}>
-        <Spacer size="l" style={{ overflow: 'hidden' }}>
-          <Spacer style={{ overflow: 'hidden', width: '100%' }}>
+    <Wrapper s={{ padding: 'l', overflow: 'hidden' }}>
+      <Container s={{ overflow: 'hidden' }}>
+        <Spacer size="l" s={{ overflow: 'hidden' }}>
+          <Spacer s={{ overflow: 'hidden', width: '100%' }}>
             <Title>Tricks</Title>
-            <List style={{ width: '100%', overflow: 'scroll' }}>
+            <List s={{ width: '100%', overflow: 'scroll' }}>
               {tricks.map((trick: any) => (
                 <ListItem>
                   <Text type="small">

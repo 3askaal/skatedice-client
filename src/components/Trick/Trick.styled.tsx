@@ -1,28 +1,20 @@
-import styled from 'styled-components'
-import { flexGrow, justifyContent, display } from 'styled-system'
+import { styled, rgba } from '3oilerplate'
 
-export const STrick = styled.div<any>(
-  {
-    display: 'inline-flex',
-    fontSize: '.9em',
-  },
-  display,
-)
+export const STrick = styled.div({
+  display: 'inline-flex',
+  fontSize: '.9em',
+})
 
-export const STrickPart = styled.div<any>(
-  ({ theme, interactive }) => ({
-    display: 'flex',
+export const STrickPart = styled.div(({ theme, interactive }: any) => ({
+  display: 'flex',
 
-    ...(interactive && {
-      backgroundColor: theme.colors.grey50,
-      padding: theme.space.s,
-      borderRadius: theme.radii.m,
-    }),
-
-    '+ *': {
-      marginLeft: theme.space.xxs,
-    },
+  ...(interactive && {
+    backgroundColor: rgba(theme.colors.grey90, 0.25),
+    padding: theme.space.s,
+    borderRadius: theme.radii.m,
   }),
-  flexGrow,
-  justifyContent,
-)
+
+  '+ *': {
+    marginLeft: theme.space.xxs,
+  },
+}))

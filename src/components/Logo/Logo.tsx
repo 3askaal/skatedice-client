@@ -1,13 +1,6 @@
 import React from 'react'
-import {
-  SLogo,
-  SBoard,
-  SBoardNose,
-  SBoardTail,
-  SBoardLetters,
-  SBoardLettersItem,
-  SBoardLettersDot,
-} from './Logo.styled'
+import { SLogo, SBoard, SBoardNose, SBoardTail } from './Logo.styled'
+import { Letters } from './Letters'
 
 export const Logo = () => {
   return (
@@ -15,17 +8,7 @@ export const Logo = () => {
       <SBoard>
         <SBoardNose />
         <SBoardTail />
-        <SBoardLetters>
-          <SBoardLettersItem>s</SBoardLettersItem>
-          <SBoardLettersDot>.</SBoardLettersDot>
-          <SBoardLettersItem>k</SBoardLettersItem>
-          <SBoardLettersDot>.</SBoardLettersDot>
-          <SBoardLettersItem>a</SBoardLettersItem>
-          <SBoardLettersDot>.</SBoardLettersDot>
-          <SBoardLettersItem>t</SBoardLettersItem>
-          <SBoardLettersDot>.</SBoardLettersDot>
-          <SBoardLettersItem>e</SBoardLettersItem>
-        </SBoardLetters>
+        <Letters />
       </SBoard>
     </SLogo>
   )

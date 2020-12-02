@@ -1,11 +1,9 @@
-import styled from 'styled-components'
-import { fontSize } from 'styled-system'
-import { rgba } from '3oilerplate'
+import { styled, rgba } from '3oilerplate'
 import griptape from '../../assets/images/griptape.png'
 
-export const SLogo = styled.div<any>({}, fontSize)
+export const SLogo = styled.div({})
 
-export const SBoard = styled.div(({ theme }) => ({
+export const SBoard = styled.div(({ theme }: any) => ({
   display: 'flex',
   position: 'relative',
   minHeight: '5rem',
@@ -43,24 +41,43 @@ export const SBoardTail = styled.div({
   right: 0,
 })
 
-export const SBoardLetters = styled.div(({ theme }) => ({
+export const SBoardLetters = styled.div(({ theme }: any) => ({
+  alignItems: 'flex-end',
   marginTop: '-4px',
-  fontFamily: theme.fonts.board,
+  fontFamily: 'board',
   fontSize: '2.8rem',
   textShadow: '0 2px 6px black',
 }))
 
-export const SBoardLettersItem = styled.span(({ theme }) => ({
-  color: theme.colors.primary,
-}))
+export const SBoardLettersItem = styled.span(
+  ({ theme }: any) => ({
+    color: 'primary',
+    opacity: 0.125,
+    transition: 'all .4s ease',
+    paddingX: '0.5rem',
+  }),
+  {
+    isActive: {
+      opacity: 1,
+    },
+  },
+)
 
-export const SBoardLettersDot = styled.span(({ theme }) => ({
-  display: 'inline-block',
-  textAlign: 'center',
-  fontSize: '1.4rem',
-  color: theme.colors.secondary,
-  minWidth: '1.25rem',
-}))
+export const SBoardLettersDot = styled.span(
+  ({ theme }: any) => ({
+    display: 'inline-block',
+    textAlign: 'center',
+    fontSize: '1.4rem',
+    color: 'secondary',
+    opacity: 0.125,
+    transition: 'all .4s ease',
+  }),
+  {
+    isActive: {
+      opacity: 1,
+    },
+  },
+)
 
 // export const SBoardSubline = styled.div({
 //   display: 'flex',

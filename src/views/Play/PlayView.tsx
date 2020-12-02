@@ -1,143 +1,78 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Wrapper,
   Container,
   Spacer,
   Button,
-  Select,
-  Row,
-  Col,
-  Title,
-  List,
-  ListItem,
+  ElementGroup,
   Box,
-  Link,
-  Body,
+  Popup,
 } from '3oilerplate'
-import { pull, takeRight, initial } from 'lodash'
+import { filter } from 'lodash'
 
-import { TrickAnimation, Trick } from '../../components'
-import { DIFFICULTY_OPTIONS } from '../../constants'
-import { TrickContext } from '../../context'
+import { TricksPanel } from './TricksPanel'
+import { ScoreboardPanel } from './ScoreboardPanel'
+import { ScoreContext } from '../../context'
 
 const PlayView = () => {
-  const {
-    settings,
-    setSettings,
-    availableTricks,
-    setAvailableTricks,
-    previousTricks,
-    setPreviousTricks,
-    getRandomTrick,
-    resetTricks,
-  }: any = useContext(TrickContext)
-  const [currentTrick, setCurrentTrick] = useState()
-  const [showAllPrevious, setShowAllPrevious] = useState(false)
-
-  function onNextClick() {
-    if (availableTricks.length) {
-      const randomTrick = getRandomTrick()
-      setCurrentTrick(randomTrick)
-      setPreviousTricks([...previousTricks, randomTrick])
-      setAvailableTricks(pull(availableTricks, randomTrick))
-    }
-  }
-
-  function onRestart() {
-    resetTricks()
-  }
-
-  function onSelectChange(value: any) {
-    setCurrentTrick(undefined)
-    setSettings({ difficulty: value })
-  }
-
+  const { players }: any = useContext(ScoreContext)
+  const [activePanel, setActivePanel] = useState('tricks')
+  const [gameOver, setGameOver] = useState(false)
+  
   useEffect(() => {
-    if (availableTricks.length) {
-      setCurrentTrick(getRandomTrick())
+    const playersLeft: number = filter(players, (player) => player.score < 5).length
+
+    if (playersLeft === 1) {
+      setGameOver(true)
     }
-  }, [settings, availableTricks])
+  }, [players])
 
   return (
-    <Wrapper style={{ overflow: 'hidden', padding: 'l' }}>
+    <Wrapper s={{ overflow: 'hidden', padding: 'l' }}>
       <Container
-        style={{
+        s={{
+          display: 'flex',
           overflow: 'hidden',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
       >
-        <Spacer size="m" style={{ flexGrow: 1, overflow: 'hidden' }}>
-          <Select
-            block
-            options={DIFFICULTY_OPTIONS}
-            value={settings.difficulty}
-            onChange={onSelectChange}
-          />
+        <Spacer size="l" s={{ flexGrow: 1, overflow: 'hidden' }}>
+          <ElementGroup style={{ width: '100%' }}>
+            <Button
+              isBlock
+              isOutline={activePanel !== 'tricks'}
+              onClick={() => setActivePanel('tricks')}
+            >
+              Tricks
+            </Button>
+            <Button
+              isBlock
+              isOutline={activePanel !== 'scoreboard'}
+              onClick={() => setActivePanel('scoreboard')}
+            >
+              Scoreboard
+            </Button>
+          </ElementGroup>
 
-          {previousTricks.length ? (
-            <Spacer size="s" style={{ overflow: 'hidden' }}>
-              <Row style={{ justifyContent: 'space-between' }}>
-                <Col style={{ flexGrow: 0 }}>
-                  <Title level={5}>Previous tricks:</Title>
-                </Col>
-                <Col style={{ flexGrow: 0 }}>
-                  {previousTricks.length > 3 ? (
-                    <Link onClick={() => setShowAllPrevious(!showAllPrevious)}>
-                      {showAllPrevious ? 'Show Latest' : 'Show All'}
-                    </Link>
-                  ) : null}
-                </Col>
-              </Row>
-              <List
-                style={{
-                  flexGrow: 1,
-                  overflow: showAllPrevious ? 'scroll' : null,
-                }}
-              >
-                {(showAllPrevious
-                  ? initial(previousTricks)
-                  : takeRight(previousTricks, 3)
-                ).map((previousTrick: any) => (
-                  <ListItem>
-                    <Trick trick={previousTrick} />
-                  </ListItem>
-                ))}
-              </List>
-            </Spacer>
-          ) : null}
+          <Box
+            s={{
+              display: 'flex',
+              flexGrow: 1,
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            {activePanel === 'tricks' ? <TricksPanel /> : null}
+            {activePanel === 'scoreboard' ? <ScoreboardPanel /> : null}
+          </Box>
+
+          { gameOver ? (
+            <Popup header='Game Over' onClose={() => setGameOver(false)}>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam facilis sequi veritatis voluptatum mollitia iure, nobis laboriosam. Sequi ratione repellat hic perspiciatis maiores explicabo, eius accusantium, voluptatibus, eum quidem animi.</p>
+            </Popup>
+          ) : null }
         </Spacer>
-        <Box
-          style={{
-            display: 'flex',
-            paddingTop: 'xl',
-            paddingBottom: 'xl',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexGrow: 10,
-          }}
-        >
-          {availableTricks && availableTricks.length ? (
-            <TrickAnimation trick={currentTrick} />
-          ) : (
-            <Body>
-              <p>
-                Out of tricks. Re-start game or try another difficulty level.
-              </p>
-            </Body>
-          )}
-        </Box>
-
-        <Button
-          isBlock
-          onClick={
-            availableTricks && availableTricks.length ? onNextClick : onRestart
-          }
-        >
-          {availableTricks && availableTricks.length
-            ? 'Next Trick'
-            : 'Reset Tricks'}
-        </Button>
       </Container>
     </Wrapper>
   )

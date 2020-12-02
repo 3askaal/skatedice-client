@@ -3,7 +3,7 @@ import { Container, Wrapper, Spacer, Body, Title } from '3oilerplate'
 
 const RulesView = () => {
   return (
-    <Wrapper style={{ padding: 'l' }}>
+    <Wrapper s={{ padding: 'l' }}>
       <Container>
         <Spacer size="s">
           <Title>Rules</Title>

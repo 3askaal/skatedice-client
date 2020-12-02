@@ -10,10 +10,10 @@ const HomeView = () => {
 
   return (
     <Wrapper>
-      <Container style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Spacer size="l" style={{ alignItems: 'center' }}>
+      <Container s={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Spacer size="l" s={{ alignItems: 'center' }}>
           <Logo />
-          <Spacer size="m" style={{ alignItems: 'center' }}>
+          <Spacer size="m" s={{ alignItems: 'center' }}>
             <Button onClick={() => history.push('/setup')}>Play Game</Button>
             {/* <Button onClick={() => history.push('/rules')}>Rules</Button> */}
             <Button onClick={() => history.push('/tricks')}>
