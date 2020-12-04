@@ -5,10 +5,10 @@ import {
   Button,
   Text,
 } from '3oilerplate'
-import { ScoreContext } from '../../context'
+import { MatchContext } from '../../context'
 
 export const PlayerNav = () => {
-  const { nextPlayer, previousPlayer, currentPlayer }: any = useContext(ScoreContext)
+  const { nextPlayer, previousPlayer, currentPlayer }: any = useContext(MatchContext)
 
   return (
     <Spacer size="l" s={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>

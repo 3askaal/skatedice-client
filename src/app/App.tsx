@@ -4,11 +4,13 @@ import { createBrowserHistory } from 'history'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle, theme } from '3oilerplate'
 import deepmerge from 'deepmerge'
-import { TrickProvider, ScoreProvider } from '../context'
+import { TrickProvider, MatchProvider } from '../context'
 import { HomeView, SetupView, PlayView, TricksView } from '../views'
 import { LocalGlobalStyle, theme as localTheme } from '../style'
 import { SApp } from './App.styled'
 import './fonts.css'
+import MatchesView from '../views/Matches/Matches'
+import TournamentsView from '../views/Tournaments/Tournaments'
 
 export const history = createBrowserHistory()
 
@@ -19,7 +21,7 @@ const App = () => {
         <GlobalStyle />
         <LocalGlobalStyle />
         <TrickProvider>
-          <ScoreProvider>
+          <MatchProvider>
             <Router history={history}>
               <Switch>
                 <Route exact path="/">
@@ -37,9 +39,15 @@ const App = () => {
                 <Route path="/tricks">
                   <TricksView />
                 </Route>
+                <Route path="/matches">
+                  <MatchesView />
+                </Route>
+                <Route path="/tournaments">
+                  <TournamentsView />
+                </Route>
               </Switch>
             </Router>
-          </ScoreProvider>
+          </MatchProvider>
         </TrickProvider>
       </SApp>
     </ThemeProvider>

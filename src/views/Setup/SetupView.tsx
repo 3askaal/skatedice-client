@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Container, Wrapper, Spacer, Button, ElementGroup } from '3oilerplate'
-import { TrickContext, ScoreContext } from '../../context'
+import { TrickContext, MatchContext } from '../../context'
 import { SettingsPanel } from './SettingsPanel'
 import { PlayersPanel } from './PlayersPanel'
 
 const SetupView = () => {
   const history = useHistory()
   const { resetTricks }: any = useContext(TrickContext)
-  const { startMatch }: any = useContext(ScoreContext)
+  const { startMatch }: any = useContext(MatchContext)
   const [activePanel, setActivePanel] = useState('settings')
 
   function onStart() {

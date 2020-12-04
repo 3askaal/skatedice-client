@@ -12,10 +12,10 @@ import { filter } from 'lodash'
 
 import { TricksPanel } from './TricksPanel'
 import { ScoreboardPanel } from './ScoreboardPanel'
-import { ScoreContext } from '../../context'
+import { MatchContext } from '../../context'
 
 const PlayView = () => {
-  const { players }: any = useContext(ScoreContext)
+  const { players }: any = useContext(MatchContext)
   const [activePanel, setActivePanel] = useState('tricks')
   const [gameOver, setGameOver] = useState(false)
   

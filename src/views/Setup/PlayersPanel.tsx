@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Spacer, Button, Input, Text, ElementGroup } from '3oilerplate'
 import { pullAt, some } from 'lodash'
 import { X as XIcon, Plus as PlusIcon } from 'react-feather'
-import { ScoreContext } from '../../context'
+import { MatchContext } from '../../context'
 
 export const PlayersPanel = () => {
-  const { players, setPlayers }: any = useContext(ScoreContext)
+  const { players, setPlayers }: any = useContext(MatchContext)
   const [currentPlayerName, setCurrentPlayerName] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
 

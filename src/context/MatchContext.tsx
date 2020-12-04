@@ -1,13 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { Match, Player } from '../types'
 
-export const ScoreContext = createContext({})
+export const MatchContext = createContext({})
 
-export const ScoreProvider = ({ children }: any) => {
+export const MatchProvider = ({ children }: any) => {
   const [activeMatch, setActiveMatch] = useState<Match | null>()
   const [match, setMatch] = useState<Match | null>()
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
-  const [currentPlayer, setCurrentPlayer] = useState<Player>(0)
+  const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null)
 
   useEffect(() => {
     const storedActiveMatch = localStorage.getItem('active:match')
@@ -39,7 +39,7 @@ export const ScoreProvider = ({ children }: any) => {
   }
 
   return (
-    <ScoreContext.Provider
+    <MatchContext.Provider
       value={{
         activeMatch,
         startMatch,
@@ -49,6 +49,6 @@ export const ScoreProvider = ({ children }: any) => {
       }}
     >
       {children}
-    </ScoreContext.Provider>
+    </MatchContext.Provider>
   )
 }

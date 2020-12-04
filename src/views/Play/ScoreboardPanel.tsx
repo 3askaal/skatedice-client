@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Button, List, ListItem, Text, Spacer } from '3oilerplate'
-import { ScoreContext } from '../../context'
+import { MatchContext } from '../../context'
 import { Letters } from '../../components/Logo/Letters'
 
 export const ScoreboardPanel = () => {
-  const { players, setPlayers }: any = useContext(ScoreContext)
+  const { players, setPlayers }: any = useContext(MatchContext)
 
   const onLetterClick = (playerIndex: number, newScore: number) => {
     const newPlayers = [...players]

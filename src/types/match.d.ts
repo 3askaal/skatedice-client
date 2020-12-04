@@ -19,6 +19,6 @@ export interface Match {
   current: User;
   ref?: User;
   winner?: User;
-  done: boolean;
-  tournament: Tournament;
+  done?: boolean;
+  tournament?: Tournament;
 }
