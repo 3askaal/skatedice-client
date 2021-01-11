@@ -15,8 +15,10 @@ export const MatchProvider = ({ children }: any) => {
   }, [])
 
   useEffect(() => {
-    setCurrentPlayer((match as Match).players[currentPlayerIndex])
-  }, [currentPlayerIndex])
+    if (match) {
+      setCurrentPlayer(match!.players[currentPlayerIndex])
+    }
+  }, [currentPlayerIndex, match])
 
   const startMatch = (newMatch: Match) => {
     setMatch(newMatch)

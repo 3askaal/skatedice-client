@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"3oilerplate@^0.1.41":
-  version "0.1.41"
-  resolved "https://registry.yarnpkg.com/3oilerplate/-/3oilerplate-0.1.41.tgz#b4f7b0912f7d2bda4d55c77590b24db733110165"
-  integrity sha512-Y56vDjqsYAkhIitbDV+GVd0dtj7B0+SgFbT4tnHvUXXeFDpZemMAeLbl+vo4xpIcI2VLfA64U+SZ1DdMKq9ICQ==
+"3oilerplate@^0.1.44":
+  version "0.1.44"
+  resolved "https://registry.yarnpkg.com/3oilerplate/-/3oilerplate-0.1.44.tgz#364b3833fd68bb160617ebff1ebf3fb6a04fe47b"
+  integrity sha512-+9fIj9QYm0SRe7K7SZu85OHSD9szBpcfACx5KzhYlQ/cJgyTVLsMyc0HW0SEyFPXYE+N0paD3IX/bXriwLSfyQ==
   dependencies:
     "@mdx-js/react" "^1.6.16"
     "@styled-system/css" "^5.1.5"
