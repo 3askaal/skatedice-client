@@ -13,10 +13,18 @@ export const TrickProvider = ({ children }: any) => {
     difficulty: 4,
   })
 
+  function resetTricks() {
+    setAvailableTricks(
+      filter(tricks, (trick: any) => {
+        return trick.difficulty <= settings.difficulty
+      }),
+    )
+    setPreviousTricks([])
+  }
+
   async function fetchTricks() {
     const { data } = await Axios.get(`${API_URL}/tricks`)
     setTricks(data)
-    setAvailableTricks(data)
   }
 
   useEffect(() => {
@@ -27,18 +35,11 @@ export const TrickProvider = ({ children }: any) => {
     return sample(availableTricks)
   }
 
-  function resetTricks() {
-    setAvailableTricks(
-      filter(tricks, (trick: any) => {
-        return trick.difficulty <= settings.difficulty
-      }),
-    )
-    setPreviousTricks([])
-  }
-
   useEffect(() => {
-    resetTricks()
-  }, [settings])
+    if (tricks.length) {
+      resetTricks()
+    }
+  }, [settings, tricks])
 
   return (
     <TrickContext.Provider

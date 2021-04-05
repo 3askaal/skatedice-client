@@ -35,11 +35,14 @@ const PlayView = () => {
   const [showAllPrevious, setShowAllPrevious] = useState(false)
 
   function onNextClick() {
+    if (currentTrick) {
+      setPreviousTricks([...previousTricks, currentTrick])
+      setAvailableTricks(pull(availableTricks, currentTrick))
+    }
+
     if (availableTricks.length) {
       const randomTrick = getRandomTrick()
       setCurrentTrick(randomTrick)
-      setPreviousTricks([...previousTricks, randomTrick])
-      setAvailableTricks(pull(availableTricks, randomTrick))
     }
   }
 
