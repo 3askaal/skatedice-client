@@ -14,7 +14,7 @@ import {
   Link,
   Body,
 } from '3oilerplate'
-import { pull, takeRight, initial } from 'lodash'
+import { pull, takeRight } from 'lodash'
 
 import { TrickAnimation, Trick } from '../../components'
 import { DIFFICULTY_OPTIONS } from '../../constants'
@@ -80,13 +80,13 @@ const PlayView = () => {
 
           {previousTricks.length ? (
             <Spacer size="s" style={{ overflow: 'hidden' }}>
-              <Row style={{ justifyContent: 'space-between' }}>
+              <Row style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
                 <Col style={{ flexGrow: 0 }}>
                   <Title level={5}>Previous tricks:</Title>
                 </Col>
                 <Col style={{ flexGrow: 0 }}>
                   {previousTricks.length > 3 ? (
-                    <Link onClick={() => setShowAllPrevious(!showAllPrevious)}>
+                    <Link s={{ cursor: 'pointer' }} onClick={() => setShowAllPrevious(!showAllPrevious)}>
                       {showAllPrevious ? 'Show Latest' : 'Show All'}
                     </Link>
                   ) : null}
@@ -99,7 +99,7 @@ const PlayView = () => {
                 }}
               >
                 {(showAllPrevious
-                  ? initial(previousTricks)
+                  ? previousTricks
                   : takeRight(previousTricks, 3)
                 ).map((previousTrick: any) => (
                   <ListItem>
